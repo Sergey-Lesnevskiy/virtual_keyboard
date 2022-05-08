@@ -1,0 +1,80 @@
+#textArea{
+    display: block;
+    margin: 0 auto;
+    width: 1000px;
+    height: 200px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    font-size: 40px;
+    color: #ff0;
+    background-color: rgb(112, 191, 220);
+    border-radius: 50px;
+}
+
+body{
+    background-color:rgb(12, 30, 85);
+}
+#keyblock{
+    margin: 0 auto;
+    /* margin-top: 200px; */
+    max-width: 1000px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    border: 2px solid rgb(78, 212, 233);
+    border-radius: 50px;
+    padding: 5px;
+    background-color:rgb(12, 30, 85);
+}
+#keyblock::after{
+    content: '';
+    display: block;
+    clear:both;
+}
+/* div{
+    border: 2px solid black;
+    padding: 5px;
+    background-color: aqua;
+
+} */
+.key-key{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border: 1px solid black;
+    margin: 3px;
+    padding: 3px;
+    /* float: left; */
+    border-radius: 50px;
+    background-color: rgb(78, 212, 233);
+    font-size: 20px;
+    cursor: pointer;
+}
+.clearFix {
+display: block;
+width: 100%;
+clear: both;
+}
+.active{
+    background-color: #ff0;
+}
+#Backspace{
+   width: 150px;
+}
+#Tab{
+    width: 85px;
+}
+#CapsLock, #ShiftRight, #ShiftLeft ,#Enter{
+    width: 132px;
+}
+#Space{
+    width: 355px;;
+}
+#ControlLeft{
+    width: 66px;
+}
+.active_Upper{
+    text-transform: uppercase;
+}
