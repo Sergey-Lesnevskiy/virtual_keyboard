@@ -1,3 +1,11 @@
+function soundClick() {
+  const sound = new Audio('./sound/sound (mp3cut.net).mp3');
+  sound.play();
+}
+function soundClack() {
+  const sound = new Audio('./sound/zvuk2 (mp3cut.net).mp3');
+  sound.play();
+}
 const divConteiner = document.createElement('div');
 divConteiner.id = 'keyblock';
 document.body.append(divConteiner);
@@ -45,16 +53,19 @@ document.addEventListener('keydown', (event) => {
     inputText.innerText = '';
     inputIn();
     actKey.classList.add('active');
+    soundClack();
   } else if (actKey.id === 'Tab') {
     textAr += '  ';
     inputIn();
     event.preventDefault();
     actKey.classList.add('active');
+    soundClack();
   } else if (actKey.id === 'Enter') {
     textAr += '\n';
     inputIn();
     actKey.classList.add('active');
     event.preventDefault();
+    soundClack();
   } else if (actKey.id === 'ArrowLeft') {
     // a += 1;
     inputText.focus();
@@ -62,6 +73,7 @@ document.addEventListener('keydown', (event) => {
     // inputIn();
     actKey.classList.add('active');
     // event.preventDefault();
+    soundClack();
   } else if (actKey.id === 'ArrowRight') {
     inputText.focus();
     // inputText.selectionStart = inputText.value.length - a;
@@ -69,6 +81,7 @@ document.addEventListener('keydown', (event) => {
     // inputIn();
     actKey.classList.add('active');
     // event.preventDefault();
+    soundClack();
   } else if (actKey.id === 'ArrowUp') {
     // const b = 45;
     inputText.focus();
@@ -76,6 +89,7 @@ document.addEventListener('keydown', (event) => {
     // inputIn();
     // a += b;
     actKey.classList.add('active');
+    soundClack();
   } else if (actKey.id === 'ArrowDown') {
     // const b = 45;
     inputText.focus();
@@ -84,6 +98,7 @@ document.addEventListener('keydown', (event) => {
     actKey.classList.add('active');
     // // a = ;
     // event.preventDefault();
+    soundClack();
   } else if (actKey.id === 'CapsLock') {
     for (let i = 0; i < keyboard.length; i += 1) {
       if (keyboardData[i].startsWith('Key')) {
@@ -91,6 +106,7 @@ document.addEventListener('keydown', (event) => {
       }
     }
     actKey.classList.add('active');
+    soundClack();
   } else if (actKey.id === 'ShiftLeft') {
     event.preventDefault();
     for (let i = 0; i < keyboard.length; i += 1) {
@@ -99,6 +115,7 @@ document.addEventListener('keydown', (event) => {
       }
     }
     actKey.classList.add('active');
+    soundClack();
   } else if (actKey.id === 'ShiftRight') {
     event.preventDefault();
     for (let i = 0; i < keyboard.length; i += 1) {
@@ -107,27 +124,34 @@ document.addEventListener('keydown', (event) => {
       }
     }
     actKey.classList.add('active');
+    soundClack();
   } else if (actKey.id === 'ControlLeft') {
     actKey.classList.add('active');
     console.log('a');
+    soundClack();
   } else if (actKey.id === 'AltLeft') {
     actKey.classList.add('active');
     event.preventDefault();
     console.log('b');
+    soundClack();
   } else if (actKey.id === 'AltRight') {
     actKey.classList.add('active');
     event.preventDefault();
     console.log('b');
+    soundClack();
   } else if (actKey.id === 'MetaLeft') {
     actKey.classList.add('active');
+    soundClack();
   } else if (letters[17].classList.value === ('key-key active_Upper')) {
     actKey.classList.add('active');
     textAr += event.key.toUpperCase();
     inputIn();
+    soundClack();
   } else {
     actKey.classList.add('active');
     textAr += event.key.toLowerCase();
     inputIn();
+    soundClick();
   }
 });
 divConteiner.addEventListener('mousedown', (event) => {
@@ -232,13 +256,7 @@ document.addEventListener('keyup', (event) => {
     allButton.forEach(remuveSHift);
   }
 });
-// document.addEventListener('keyup', () => {
-//   document.querySelector('#ShiftLeft').forEach(remuveSHift);
-// });
-// allButton.addEventListener('mousedown', () => {
-//   allButton.forEach();
-//   // console.log(event.key);
-// });
+
 document.addEventListener('mouseup', (event) => {
   document.querySelectorAll('.key-key').forEach(remuveElem);
   const actKey = document.querySelector(`#${event.target.id}`);
@@ -246,15 +264,7 @@ document.addEventListener('mouseup', (event) => {
     allButton.forEach(remuveSHift);
   }
 });
-// document.querySelectorAll('.key-key').forEach(function (element) {
-//       element.onclick = function (event) {
-//     document.querySelectorAll('.key-key').forEach(function (element) {
-//       element.classList.remove('active');
-//     });
-//     this.classList.add('active');
-//   }
-// });
-// // отрисовали ширину кнопок
+// отрисовали ширину кнопок
 function fixClass(IdFind, textButt) {
   const find = document.querySelector(`#${IdFind}`);
   find.innerHTML = textButt;
