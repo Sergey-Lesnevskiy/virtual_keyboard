@@ -6,12 +6,22 @@ function soundClack() {
   const sound = new Audio('./sound/zvuk2 (mp3cut.net).mp3');
   sound.play();
 }
+
 const divConteiner = document.createElement('div');
 divConteiner.id = 'keyblock';
 document.body.append(divConteiner);
+const divText = document.createElement('div');
+divText.classList.add('text');
+document.body.before(divText);
+divText.innerHTML = 'VIRTUAL KEYBOARD';
+const divAboutVirtual = document.createElement('div');
+divAboutVirtual.classList.add('descriptionKeyboard');
+document.body.after(divAboutVirtual);
+divAboutVirtual.innerHTML = 'Клавиатура создана в операционной системе Windows\nДля переключения языка комбинация: ещё не работает';
 const inputText = document.createElement('textarea');
 inputText.id = 'textArea';
 document.body.prepend(inputText);
+
 const keyboard = ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace', 'Tab', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O',
   'P', '[', ']', '\\', 'Delete', 'CapsLock', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', "'", 'Enter', 'Shift', 'z', 'x', 'c', 'v', 'b', 'n',
   'm', ',', '.', '/', '&uarr;', 'Shift', 'Control', 'Meta', 'Alt', ' ', 'Alt', '&larr;', '&darr;', '&rarr;'];
