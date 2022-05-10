@@ -56,7 +56,7 @@ function inputIn() {
   inputText.value = textAr;
 }
 const allButton = document.querySelectorAll('.key-key');
-let a = 0;
+// let a = 0;
 const letters = document.querySelectorAll('.key-key');
 document.addEventListener('keydown', (event) => {
   // allButton.forEach(remuveElem);
@@ -95,13 +95,13 @@ document.addEventListener('keydown', (event) => {
     event.preventDefault();
     soundClack();
   } else if (actKey.id === 'ArrowLeft') {
-    a -= 1;
+    // a -= 1;
     inputText.focus();
     inputIn();
     actKey.classList.add('active');
     soundClack();
   } else if (actKey.id === 'ArrowRight') {
-    a += 1;
+    // a += 1;
     inputText.focus();
     actKey.classList.add('active');
     soundClack();
@@ -154,21 +154,24 @@ document.addEventListener('keydown', (event) => {
     actKey.classList.add('active');
     soundClack();
   } else if (letters[17].classList.value === ('key-key active_Upper')) {
+    inputText.focus();
     actKey.classList.add('active');
     textAr += event.key.toUpperCase();
     inputIn();
     soundClack();
-    a += 1;
+    // a += 1;
   } else {
-    const textj = textAr.split('');
-    textj.splice(a, 0, event.key.toLowerCase());
-    textAr = textj.join('');
-    actKey.classList.add('active');
+    // const textj = textAr.split('');
+    // textj.splice(a, 0, event.key.toLowerCase());
+    // textAr = textj.join('');
+    // actKey.classList.add('active');
+    textAr += event.key.toLowerCase();
     inputIn();
-    inputText.selectionStart = a;
-    inputText.selectionEnd = a;
+    // inputText.selectionStart = a;
+    // inputText.selectionEnd = a;
     soundClick();
-    a += 1;
+    // a += 1;
+    // inputText.focus();
   }
 });
 
@@ -273,16 +276,17 @@ divConteiner.addEventListener('mousedown', (event) => {
     // console.log('a');
     event.preventDefault();
   } else {
-    const select = inputText.selectionEnd;
-    const textj = textAr.split('');
-    textj.splice(select, 0, event.target.innerText);
-    textAr = textj.join('');
+    // const select = inputText.selectionEnd;
+    // const textj = textAr.split('');
+    // textj.splice(select, 0, event.target.innerText);
+    // textAr = textj.join('');
+    textAr += event.target.innerText;
     actKey.classList.add('active');
     inputIn();
-    inputText.selectionStart = select;
-    inputText.selectionEnd = select;
+    // inputText.selectionStart = select;
+    // inputText.selectionEnd = select;
     soundClick();
-    a += 1;
+    // a += 1;
   }
 });
 document.addEventListener('keyup', (event) => {
