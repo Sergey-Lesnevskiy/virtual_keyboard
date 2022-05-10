@@ -171,6 +171,18 @@ document.addEventListener('keydown', (event) => {
   }
 });
 
+divConteiner.addEventListener('mouseover', (event) => {
+  const actKey = document.querySelector(`#${event.target.id}`);
+  if (event.target.id !== 'keyblock') {
+    actKey.classList.add('activeMouse');
+  }
+});
+divConteiner.addEventListener('mouseout', (event) => {
+  const actKey = document.querySelector(`#${event.target.id}`);
+  if (event.target.id !== 'keyblock') {
+    actKey.classList.remove('activeMouse');
+  }
+});
 divConteiner.addEventListener('mousedown', (event) => {
   const actKey = document.querySelector(`#${event.target.id}`);
   if (actKey.id === 'Backspace') {
@@ -207,7 +219,6 @@ divConteiner.addEventListener('mousedown', (event) => {
     inputText.focus();
     let select = inputText.selectionEnd;
     select -= 1;
-    console.log(event);
     inputText.selectionStart = select;
     inputText.selectionEnd = select;
     actKey.classList.add('active');
@@ -270,9 +281,6 @@ divConteiner.addEventListener('mousedown', (event) => {
     inputText.selectionStart = select;
     inputText.selectionEnd = select;
     soundClick();
-    // actKey.classList.add('active');
-    // textAr += event.target.innerText;
-    // inputIn();
   }
 });
 document.addEventListener('keyup', (event) => {
