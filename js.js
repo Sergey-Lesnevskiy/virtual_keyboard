@@ -6,7 +6,10 @@ function soundClack() {
   const sound = new Audio('./sound/zvuk2 (mp3cut.net).mp3');
   sound.play();
 }
-
+const link = document.createElement('a');
+link.href = 'https://github.com/Sergey-Lesnevskiy/virtual_keyboard/pull/1';
+link.innerHTML = 'Ссылка на PUll моей работы';
+document.body.after(link);
 const divConteiner = document.createElement('div');
 divConteiner.id = 'keyblock';
 document.body.append(divConteiner);
@@ -53,15 +56,30 @@ function inputIn() {
   inputText.value = textAr;
 }
 const allButton = document.querySelectorAll('.key-key');
-// let a = 0;
+let a = 0;
 const letters = document.querySelectorAll('.key-key');
 document.addEventListener('keydown', (event) => {
   // allButton.forEach(remuveElem);
   const actKey = document.querySelector(`#${event.code}`);
   if (actKey.id === 'Backspace') {
-    textAr = textAr.slice(0, textAr.length - 1);
-    inputText.innerText = '';
+    const select = inputText.selectionEnd;
+    const textj = textAr.split('');
+    textj.splice(select - 1, 1);
+    textAr = textj.join('');
     inputIn();
+    inputText.selectionStart = select;
+    inputText.selectionEnd = select;
+    actKey.classList.add('active');
+    soundClack();
+  } else if (actKey.id === 'Delete') {
+    const select = inputText.selectionEnd;
+    const textj = textAr.split('');
+    textj.splice(select, 1);
+    textAr = textj.join('');
+    inputIn();
+    inputText.selectionStart = select;
+    inputText.selectionEnd = select;
+    event.preventDefault();
     actKey.classList.add('active');
     soundClack();
   } else if (actKey.id === 'Tab') {
@@ -77,37 +95,23 @@ document.addEventListener('keydown', (event) => {
     event.preventDefault();
     soundClack();
   } else if (actKey.id === 'ArrowLeft') {
-    // a += 1;
+    a -= 1;
     inputText.focus();
-    // inputText.selectionStart = inputText.value.length - a;
-    // inputIn();
+    inputIn();
     actKey.classList.add('active');
-    // event.preventDefault();
     soundClack();
   } else if (actKey.id === 'ArrowRight') {
+    a += 1;
     inputText.focus();
-    // inputText.selectionStart = inputText.value.length - a;
-    // a -= 1;
-    // inputIn();
     actKey.classList.add('active');
-    // event.preventDefault();
     soundClack();
   } else if (actKey.id === 'ArrowUp') {
-    // const b = 45;
     inputText.focus();
-    // inputText.selectionStart = inputText.value.length - b;
-    // inputIn();
-    // a += b;
     actKey.classList.add('active');
     soundClack();
   } else if (actKey.id === 'ArrowDown') {
-    // const b = 45;
     inputText.focus();
-    // inputText.selectionStart = inputText.value.length - b;
-    // inputIn();
     actKey.classList.add('active');
-    // // a = ;
-    // event.preventDefault();
     soundClack();
   } else if (actKey.id === 'CapsLock') {
     for (let i = 0; i < keyboard.length; i += 1) {
@@ -137,17 +141,14 @@ document.addEventListener('keydown', (event) => {
     soundClack();
   } else if (actKey.id === 'ControlLeft') {
     actKey.classList.add('active');
-    console.log('a');
     soundClack();
   } else if (actKey.id === 'AltLeft') {
     actKey.classList.add('active');
     event.preventDefault();
-    console.log('b');
     soundClack();
   } else if (actKey.id === 'AltRight') {
     actKey.classList.add('active');
     event.preventDefault();
-    console.log('b');
     soundClack();
   } else if (actKey.id === 'MetaLeft') {
     actKey.classList.add('active');
@@ -158,19 +159,40 @@ document.addEventListener('keydown', (event) => {
     inputIn();
     soundClack();
   } else {
+    const textj = textAr.split('');
+    textj.splice(a, 0, event.key.toLowerCase());
+    textAr = textj.join('');
     actKey.classList.add('active');
-    textAr += event.key.toLowerCase();
     inputIn();
+    inputText.selectionStart = a;
+    inputText.selectionEnd = a;
     soundClick();
+    a += 1;
   }
 });
+
 divConteiner.addEventListener('mousedown', (event) => {
   const actKey = document.querySelector(`#${event.target.id}`);
   if (actKey.id === 'Backspace') {
-    textAr = textAr.slice(0, textAr.length - 1);
-    inputText.innerText = '';
+    const select = inputText.selectionEnd;
+    const textj = textAr.split('');
+    textj.splice(select - 1, 1);
+    textAr = textj.join('');
     inputIn();
+    inputText.selectionStart = select;
+    inputText.selectionEnd = select;
     actKey.classList.add('active');
+    soundClack();
+  } else if (actKey.id === 'Delete') {
+    const select = inputText.selectionEnd;
+    const textj = textAr.split('');
+    textAr = textj.join('');
+    inputIn();
+    inputText.selectionStart = select;
+    inputText.selectionEnd = select;
+    event.preventDefault();
+    actKey.classList.add('active');
+    soundClack();
   } else if (actKey.id === 'Tab') {
     textAr += '  ';
     inputIn();
@@ -182,34 +204,22 @@ divConteiner.addEventListener('mousedown', (event) => {
     actKey.classList.add('active');
     event.preventDefault();
   } else if (actKey.id === 'ArrowLeft') {
-    // a += 1;
     inputText.focus();
-    // inputText.selectionStart = inputText.value.length - a;
-    // inputIn();
+    let select = inputText.selectionEnd;
+    select -= 1;
+    console.log(event);
+    inputText.selectionStart = select;
+    inputText.selectionEnd = select;
     actKey.classList.add('active');
-    // event.preventDefault();
   } else if (actKey.id === 'ArrowRight') {
     inputText.focus();
-    // inputText.selectionStart = inputText.value.length - a;
-    // a -= 1;
-    // inputIn();
     actKey.classList.add('active');
-    // event.preventDefault();
   } else if (actKey.id === 'ArrowUp') {
-    // const b = 45;
     inputText.focus();
-    // inputText.selectionStart = inputText.value.length - b;
-    // inputIn();
-    // a += b;
     actKey.classList.add('active');
   } else if (actKey.id === 'ArrowDown') {
-    // const b = 45;
     inputText.focus();
-    // inputText.selectionStart = inputText.value.length - b;
-    // inputIn();
     actKey.classList.add('active');
-    // // a = ;
-    // event.preventDefault();
   } else if (actKey.id === 'CapsLock') {
     for (let i = 0; i < keyboard.length; i += 1) {
       if (keyboardData[i].startsWith('Key')) {
@@ -235,15 +245,12 @@ divConteiner.addEventListener('mousedown', (event) => {
     actKey.classList.add('active');
   } else if (actKey.id === 'ControlLeft') {
     actKey.classList.add('active');
-    console.log('a');
   } else if (actKey.id === 'AltLeft') {
     actKey.classList.add('active');
     event.preventDefault();
-    console.log('b');
   } else if (actKey.id === 'AltRight') {
     actKey.classList.add('active');
     event.preventDefault();
-    console.log('b');
   } else if (actKey.id === 'MetaLeft') {
     actKey.classList.add('active');
   } else if (letters[17].classList.value === ('key-key active_Upper')) {
@@ -254,9 +261,18 @@ divConteiner.addEventListener('mousedown', (event) => {
     // console.log('a');
     event.preventDefault();
   } else {
+    const select = inputText.selectionEnd;
+    const textj = textAr.split('');
+    textj.splice(select, 0, event.target.innerText);
+    textAr = textj.join('');
     actKey.classList.add('active');
-    textAr += event.target.innerText;
     inputIn();
+    inputText.selectionStart = select;
+    inputText.selectionEnd = select;
+    soundClick();
+    // actKey.classList.add('active');
+    // textAr += event.target.innerText;
+    // inputIn();
   }
 });
 document.addEventListener('keyup', (event) => {
