@@ -158,6 +158,7 @@ document.addEventListener('keydown', (event) => {
     textAr += event.key.toUpperCase();
     inputIn();
     soundClack();
+    a += 1;
   } else {
     const textj = textAr.split('');
     textj.splice(a, 0, event.key.toLowerCase());
@@ -281,6 +282,7 @@ divConteiner.addEventListener('mousedown', (event) => {
     inputText.selectionStart = select;
     inputText.selectionEnd = select;
     soundClick();
+    a += 1;
   }
 });
 document.addEventListener('keyup', (event) => {
