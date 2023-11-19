@@ -6,13 +6,10 @@ function soundClack() {
   const sound = new Audio('./sound/zvuk2 (mp3cut.net).mp3');
   sound.play();
 }
-const link = document.createElement('a');
-link.href = 'https://github.com/Sergey-Lesnevskiy/virtual_keyboard/pull/1';
-link.innerHTML = 'Ссылка на PUll моей работы';
-document.body.after(link);
-const divConteiner = document.createElement('div');
-divConteiner.id = 'keyblock';
-document.body.append(divConteiner);
+
+const divContainer = document.createElement('div');
+divContainer.id = 'keyBlock';
+document.body.append(divContainer);
 const divText = document.createElement('div');
 divText.classList.add('text');
 document.body.before(divText);
@@ -20,7 +17,7 @@ divText.innerHTML = 'VIRTUAL KEYBOARD';
 const divAboutVirtual = document.createElement('div');
 divAboutVirtual.classList.add('descriptionKeyboard');
 document.body.after(divAboutVirtual);
-divAboutVirtual.innerHTML = 'Клавиатура создана в операционной системе Windows\nДля переключения языка комбинация: ещё не работает';
+divAboutVirtual.innerHTML = 'Клавиатура создана в операционной системе Windows';
 const inputText = document.createElement('textarea');
 inputText.id = 'textArea';
 document.body.prepend(inputText);
@@ -42,7 +39,7 @@ function init() {
     }
     out += `<div class ="key-key" id ="${keyboardData[i]}" > ${keyboard[i].toLowerCase()} </div>`;
   }
-  divConteiner.innerHTML = out;
+  divContainer.innerHTML = out;
 }
 let textAr = '';
 init();
@@ -56,10 +53,8 @@ function inputIn() {
   inputText.value = textAr;
 }
 const allButton = document.querySelectorAll('.key-key');
-// let a = 0;
 const letters = document.querySelectorAll('.key-key');
 document.addEventListener('keydown', (event) => {
-  // allButton.forEach(remuveElem);
   const actKey = document.querySelector(`#${event.code}`);
   if (actKey.id === 'Backspace') {
     const select = inputText.selectionEnd;
@@ -159,35 +154,27 @@ document.addEventListener('keydown', (event) => {
     textAr += event.key.toUpperCase();
     inputIn();
     soundClack();
-    // a += 1;
+
   } else {
-    // const textj = textAr.split('');
-    // textj.splice(a, 0, event.key.toLowerCase());
-    // textAr = textj.join('');
-    // actKey.classList.add('active');
     textAr += event.key.toLowerCase();
     inputIn();
-    // inputText.selectionStart = a;
-    // inputText.selectionEnd = a;
     soundClick();
-    // a += 1;
-    // inputText.focus();
   }
 });
 
-divConteiner.addEventListener('mouseover', (event) => {
+divContainer.addEventListener('mouseover', (event) => {
   const actKey = document.querySelector(`#${event.target.id}`);
-  if (event.target.id !== 'keyblock') {
+  if (event.target.id !== 'keyBlock') {
     actKey.classList.add('activeMouse');
   }
 });
-divConteiner.addEventListener('mouseout', (event) => {
+divContainer.addEventListener('mouseout', (event) => {
   const actKey = document.querySelector(`#${event.target.id}`);
-  if (event.target.id !== 'keyblock') {
+  if (event.target.id !== 'keyBlock') {
     actKey.classList.remove('activeMouse');
   }
 });
-divConteiner.addEventListener('mousedown', (event) => {
+divContainer.addEventListener('mousedown', (event) => {
   const actKey = document.querySelector(`#${event.target.id}`);
   if (actKey.id === 'Backspace') {
     const select = inputText.selectionEnd;
@@ -272,21 +259,13 @@ divConteiner.addEventListener('mousedown', (event) => {
     actKey.classList.add('active');
     textAr += event.target.innerText.toUpperCase();
     inputIn();
-  } else if (event.target.id === 'keyblock') {
-    // console.log('a');
+  } else if (event.target.id === 'keyBlock') {
     event.preventDefault();
   } else {
-    // const select = inputText.selectionEnd;
-    // const textj = textAr.split('');
-    // textj.splice(select, 0, event.target.innerText);
-    // textAr = textj.join('');
     textAr += event.target.innerText;
     actKey.classList.add('active');
     inputIn();
-    // inputText.selectionStart = select;
-    // inputText.selectionEnd = select;
     soundClick();
-    // a += 1;
   }
 });
 document.addEventListener('keyup', (event) => {
@@ -323,8 +302,3 @@ fixClass('MetaLeft', 'Meta');
 fixClass('AltLeft', 'Alt');
 fixClass('AltRight', 'Alt');
 // отрисовали ширину
-
-// document.onkeydown = function (event) {
-// console.log(event);
-//   // console.log(even);
-// };
