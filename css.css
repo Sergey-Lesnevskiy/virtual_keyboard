@@ -1,0 +1,103 @@
+#textArea {
+  display: block;
+  margin: 0 auto;
+  width: 1040px;
+  height: 200px;
+  margin-top: 50px;
+  margin-bottom: 20px;
+  font-size: 40px;
+  color: #ff0;
+  background-color: rgb(112, 191, 220);
+  border-radius: 5px;
+}
+.activeMouse {
+  background-color: rgb(46, 46, 13);
+}
+a {
+  margin-left: 600px;
+  color: #ff0;
+  font-size: 40px;
+}
+body {
+  background-color: rgb(12, 30, 85);
+}
+.text {
+  margin: 0 auto;
+  margin-top: 100px;
+  width: 500px;
+  height: 50px;
+  color: rgb(112, 191, 220);
+  font-size: 40px;
+  text-align: center;
+}
+.descriptionKeyboard {
+  margin: 0 auto;
+  margin-top: 20px;
+  width: 1000px;
+  color: rgb(112, 191, 220);
+  font-size: 40px;
+  text-align: center;
+}
+#keyBlock {
+  margin: 0 auto;
+  max-width: 1000px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  border: 2px solid rgb(78, 212, 233);
+  border-radius: 5px;
+  padding: 5px;
+  background-color: rgb(12, 30, 85);
+}
+#keyBlock::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.key-key {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border: 1px solid black;
+  margin: 3px;
+  padding: 3px;
+  border-radius: 50px;
+  background-color: rgb(78, 212, 233);
+  font-size: 20px;
+  cursor: pointer;
+}
+.clearFix {
+  display: block;
+  width: 100%;
+  clear: both;
+}
+.active {
+  background-color: rgb(219, 219, 24);
+  opacity: 0.6;
+}
+#Backspace {
+  width: 150px;
+}
+#Tab {
+  width: 85px;
+}
+#CapsLock,
+#ShiftRight,
+#ShiftLeft,
+#Enter {
+  width: 132px;
+}
+#Space {
+  width: 355px;
+}
+#ControlLeft {
+  width: 66px;
+}
+.active_Upper {
+  text-transform: uppercase;
+}
+.activeMouse {
+  background-color: rgb(219, 219, 24);
+}
